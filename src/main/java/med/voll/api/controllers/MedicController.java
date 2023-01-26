@@ -1,20 +1,30 @@
 package med.voll.api.controllers;
 
-import med.voll.api.entities.medic.Medic;
+import jakarta.validation.Valid;
+import med.voll.api.entities.dto.MedicDTO;
+import med.voll.api.services.MedicService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/medic")
 public class MedicController {
 
+    @Autowired
+    private MedicService service;
 
-//    @PostMapping
-//    public ResponseEntity<Void> createAMedic(@RequestBody Medic medic) {
-//        return ResponseEntity.created(ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(service.create(medic).getId()).build());
-//    }
+    @GetMapping
+    public ResponseEntity<List<MedicDTO>> findAllMedics() {
+        return ResponseEntity.ok().body(service.findAll());
+    }
+
+    @PostMapping
+    public ResponseEntity<Void> createAMedic(@RequestBody @Valid MedicDTO medic) {
+        service.createAMedic(medic);
+        return ResponseEntity.created(ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(medic.getId()).toUri()).build();
+    }
 }
