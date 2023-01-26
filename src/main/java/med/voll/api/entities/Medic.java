@@ -11,31 +11,44 @@ public class Medic {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long CRM;
+    private Long id;
+
+    private String crm;
     private String email;
     private String phone;
+
+    //@Enumerated(EnumType.STRING)
     private MedicSpeciality speciality;
-    @OneToOne
+    @OneToOne( cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
     private Address address;
 
     public Medic() {
     }
 
-    public Medic(Long CRM, String email, String phone, MedicSpeciality speciality, Address address) {
-        this.CRM = CRM;
+    public Medic(Long id, String CRM, String email, String phone, MedicSpeciality speciality, Address address) {
+        this.id = id;
+        this.crm = CRM;
         this.email = email;
         this.phone = phone;
         this.speciality = speciality;
         this.address = address;
     }
 
-    public Long getCRM() {
-        return CRM;
+    public Long getId() {
+        return id;
     }
 
-    public void setCRM(Long CRM) {
-        this.CRM = CRM;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCrm() {
+        return crm;
+    }
+
+    public void setCrm(String crm) {
+        this.crm = crm;
     }
 
     public String getEmail() {
@@ -75,11 +88,11 @@ public class Medic {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Medic medic = (Medic) o;
-        return getCRM().equals(medic.getCRM());
+        return getId().equals(medic.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getCRM());
+        return Objects.hash(getId());
     }
 }

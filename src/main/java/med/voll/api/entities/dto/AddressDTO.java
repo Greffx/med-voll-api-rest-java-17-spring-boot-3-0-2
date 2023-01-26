@@ -1,16 +1,30 @@
 package med.voll.api.entities.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import med.voll.api.entities.Medic;
+import org.hibernate.validator.constraints.Length;
 
 public class AddressDTO {
 
     private Long id;
+
+    @NotBlank
     private String lougradouro;
     private Integer number;
     private String complement;
+
+    @NotBlank
     private String city;
+
+    @NotBlank
     private String UF;
+
+    @NotBlank
+    @Length(min = 8, max = 8)
     private Integer CEP;
+
+    @NotBlank
     private String district;
     private Medic medic;
 

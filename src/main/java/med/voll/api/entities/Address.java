@@ -1,11 +1,12 @@
 package med.voll.api.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Objects;
 
 @Entity
-@Table(name = "address")
+@Table(name = "tb_address")
 public class Address {
 
     @Id
@@ -20,6 +21,7 @@ public class Address {
     private String district;
 
     @OneToOne(mappedBy = "address")
+    @JsonIgnore
     private Medic medic;
 
     public Address() {
