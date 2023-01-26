@@ -1,28 +1,20 @@
-package med.voll.api.entities.medic;
+package med.voll.api.entities.dto;
 
-
-import jakarta.persistence.*;
 import med.voll.api.entities.Address;
-import med.voll.api.entities.medic.enums.Speciality;
+import med.voll.api.entities.enums.MedicSpeciality;
 
-@Entity
-@Table(name = "tb_medic")
-public class Medic {
+public class MedicDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long CRM;
     private String email;
     private String phone;
-    private Speciality speciality;
-    @OneToOne
-    @JoinColumn(name = "address_id")
+    private MedicSpeciality speciality;
     private Address address;
 
-    public Medic() {
+    public MedicDTO() {
     }
 
-    public Medic(Long CRM, String email, String phone, Speciality speciality, Address address) {
+    public MedicDTO(Long CRM, String email, String phone, MedicSpeciality speciality, Address address) {
         this.CRM = CRM;
         this.email = email;
         this.phone = phone;
@@ -54,11 +46,11 @@ public class Medic {
         this.phone = phone;
     }
 
-    public Speciality getSpeciality() {
+    public MedicSpeciality getSpeciality() {
         return speciality;
     }
 
-    public void setSpeciality(Speciality speciality) {
+    public void setSpeciality(MedicSpeciality speciality) {
         this.speciality = speciality;
     }
 

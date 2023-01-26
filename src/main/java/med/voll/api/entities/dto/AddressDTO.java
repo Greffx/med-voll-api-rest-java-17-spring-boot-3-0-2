@@ -1,15 +1,9 @@
-package med.voll.api.entities;
+package med.voll.api.entities.dto;
 
-import jakarta.persistence.*;
+import med.voll.api.entities.Medic;
 
-import java.util.Objects;
+public class AddressDTO {
 
-@Entity
-@Table(name = "address")
-public class Address {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String lougradouro;
     private Integer number;
@@ -18,14 +12,12 @@ public class Address {
     private String UF;
     private Integer CEP;
     private String district;
-
-    @OneToOne(mappedBy = "address")
     private Medic medic;
 
-    public Address() {
+    public AddressDTO() {
     }
 
-    public Address(Long id, String lougradouro, Integer number, String complement, String city, String UF, Integer CEP, String district) {
+    public AddressDTO(Long id, String lougradouro, Integer number, String complement, String city, String UF, Integer CEP, String district) {
         this.id = id;
         this.lougradouro = lougradouro;
         this.number = number;
@@ -106,18 +98,5 @@ public class Address {
 
     public void setMedic(Medic medic) {
         this.medic = medic;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Address address = (Address) o;
-        return getId().equals(address.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId());
     }
 }
