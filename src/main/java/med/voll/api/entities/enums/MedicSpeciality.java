@@ -1,6 +1,6 @@
-package med.voll.api.entities.medic.enums;
+package med.voll.api.entities.enums;
 
-public enum Speciality {
+public enum MedicSpeciality {
 
     DERMATOLOGIST,
     GYNECOLOGIST,
