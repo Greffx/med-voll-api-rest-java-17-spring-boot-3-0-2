@@ -3,4 +3,8 @@ server:
 
 spring:
   profiles:
-    active: "testDBH2"
+    group:
+      studyPurpose:
+        - "testDBH2"
+        - "mySqlWorkbench"
+    active: "mySqlWorkbench"
