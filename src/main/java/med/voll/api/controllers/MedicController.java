@@ -2,6 +2,7 @@ package med.voll.api.controllers;
 
 import jakarta.validation.Valid;
 import med.voll.api.entities.dto.FormMedicDTO;
+import med.voll.api.entities.dto.FormToUpdateMedicDTO;
 import med.voll.api.entities.dto.MedicDTO;
 import med.voll.api.services.MedicService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,4 +35,11 @@ public class MedicController {
         service.createAMedic(medic);
         return ResponseEntity.created(ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(medic.getId()).toUri()).build();
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> upgradeAMedic(@RequestBody FormToUpdateMedicDTO medic, @PathVariable Long id) {
+        service.upgradeAMedic(medic, id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
