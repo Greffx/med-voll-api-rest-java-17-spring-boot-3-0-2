@@ -44,10 +44,6 @@ public class MedicService {
             monitored.setName(medic.getName());
         }
 
-        if (medic.getSpeciality() != null) {
-            monitored.setSpeciality(medic.getSpeciality());
-        }
-
         if (medic.getPhone() != null) {
             monitored.setPhone(medic.getPhone());
         }
@@ -88,5 +84,9 @@ public class MedicService {
             address.setUF(addressDTO.getUF());
         }
         return address;
+    }
+
+    public void deleteAMedic(Long id) {
+        repository.deleteById(id);
     }
 }

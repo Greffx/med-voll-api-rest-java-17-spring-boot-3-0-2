@@ -42,4 +42,10 @@ public class MedicController {
         return ResponseEntity.noContent().build();
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteAMedic(@PathVariable Long id) {
+        service.deleteAMedic(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
