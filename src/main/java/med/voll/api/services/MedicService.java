@@ -25,4 +25,8 @@ public class MedicService {
     public void createAMedic(FormMedicDTO medicDTO) {
         repository.save(mapper.fromFormMedicDTOToMedic(medicDTO));
     }
+
+    public MedicDTO findById(Long id) {
+        return mapper.fromMedicToMedicDTO(repository.findById(id).orElseThrow());
+    }
 }
