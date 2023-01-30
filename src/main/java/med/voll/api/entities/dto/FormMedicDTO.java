@@ -1,16 +1,13 @@
 package med.voll.api.entities.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import med.voll.api.entities.Address;
 import med.voll.api.entities.enums.MedicSpeciality;
 
-@JsonPropertyOrder({"id", "crm", "email", "phone", "speciality", "address"})
 public class FormMedicDTO {
 
     private Long id;
@@ -33,12 +30,12 @@ public class FormMedicDTO {
 
     @NotNull
     @Valid
-    private Address address;
+    private FormAddressDTO address;
 
     public FormMedicDTO() {
     }
 
-    public FormMedicDTO(Long id, String name, String crm, String email, String phone, Integer age, MedicSpeciality speciality, Address address) {
+    public FormMedicDTO(Long id, String name, String crm, String email, String phone, Integer age, MedicSpeciality speciality, FormAddressDTO address) {
         this.id = id;
         this.name = name;
         this.crm = crm;
@@ -105,11 +102,11 @@ public class FormMedicDTO {
         this.speciality = speciality;
     }
 
-    public Address getAddress() {
+    public FormAddressDTO getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(FormAddressDTO address) {
         this.address = address;
     }
 }

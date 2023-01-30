@@ -1,37 +1,24 @@
 package med.voll.api.entities.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import med.voll.api.entities.Medic;
-import org.hibernate.validator.constraints.Length;
 
-public class AddressDTO {
+public class FormToUpdateAddressDTO {
 
     private Long id;
-
-    @NotBlank
     private String lougradouro;
     private Integer number;
     private String complement;
-
-    @NotBlank
     private String city;
-
-    @NotBlank
     private String UF;
-
-    @NotBlank
-    @Length(min = 8, max = 8)
     private Integer CEP;
 
-    @NotBlank
     private String district;
     private Medic medic;
 
-    public AddressDTO() {
+    public FormToUpdateAddressDTO() {
     }
 
-    public AddressDTO(Long id, String lougradouro, Integer number, String complement, String city, String UF, Integer CEP, String district) {
+    public FormToUpdateAddressDTO(Long id, String lougradouro, Integer number, String complement, String city, String UF, Integer CEP, String district) {
         this.id = id;
         this.lougradouro = lougradouro;
         this.number = number;
