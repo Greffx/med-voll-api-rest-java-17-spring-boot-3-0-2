@@ -13,6 +13,8 @@ public class Medic {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String name;
+
     private String crm;
     private String email;
     private String phone;
@@ -26,8 +28,9 @@ public class Medic {
     public Medic() {
     }
 
-    public Medic(Long id, String CRM, String email, String phone, MedicSpeciality speciality, Address address) {
+    public Medic(Long id, String name, String CRM, String email, String phone, MedicSpeciality speciality, Address address) {
         this.id = id;
+        this.name = name;
         this.crm = CRM;
         this.email = email;
         this.phone = phone;
@@ -41,6 +44,14 @@ public class Medic {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCrm() {
