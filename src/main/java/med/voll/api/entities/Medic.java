@@ -15,6 +15,8 @@ public class Medic {
 
     private String name;
 
+    private Integer age;
+
     private String crm;
     private String email;
     private String phone;
@@ -28,9 +30,10 @@ public class Medic {
     public Medic() {
     }
 
-    public Medic(Long id, String name, String CRM, String email, String phone, MedicSpeciality speciality, Address address) {
+    public Medic(Long id, String name, Integer age, String CRM, String email, String phone, MedicSpeciality speciality, Address address) {
         this.id = id;
         this.name = name;
+        this.age = age;
         this.crm = CRM;
         this.email = email;
         this.phone = phone;
@@ -52,6 +55,14 @@ public class Medic {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     public String getCrm() {

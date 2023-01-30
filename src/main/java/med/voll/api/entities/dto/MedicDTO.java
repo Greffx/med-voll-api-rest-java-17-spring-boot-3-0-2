@@ -6,7 +6,6 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import med.voll.api.entities.Address;
 import med.voll.api.entities.enums.MedicSpeciality;
 
 @JsonPropertyOrder({"name", "email", "crm", "speciality"})
@@ -23,14 +22,18 @@ public class MedicDTO {
     @NotBlank(message = "this field can not be empty")
     private String email;
 
+    @NotBlank
+    private Integer age;
+
     @NotNull(message = "your speciality can't be empty")
     private MedicSpeciality speciality;
 
     public MedicDTO() {
     }
 
-    public MedicDTO(String name, String crm, String email, MedicSpeciality speciality, Address address) {
+    public MedicDTO(String name, String crm, String email, Integer age, MedicSpeciality speciality) {
         this.name = name;
+        this.age = age;
         this.crm = crm;
         this.email = email;
         this.speciality = speciality;
@@ -54,6 +57,14 @@ public class MedicDTO {
 
     public String getEmail() {
         return email;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     public void setEmail(String email) {
