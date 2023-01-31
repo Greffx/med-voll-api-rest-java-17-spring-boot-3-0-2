@@ -20,9 +20,13 @@ public class Address {
     private Integer CEP;
     private String district;
 
-    @OneToOne(mappedBy = "address")
+    @OneToOne(mappedBy = "medicAddress")
     @JsonIgnore
     private Medic medic;
+
+    @OneToOne(mappedBy = "patientAddress")
+    @JsonIgnore
+    private Patient patient;
 
     public Address() {
     }

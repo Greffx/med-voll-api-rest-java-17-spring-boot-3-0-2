@@ -24,8 +24,8 @@ public class Medic {
     //@Enumerated(EnumType.STRING)
     private MedicSpeciality speciality;
     @OneToOne( cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id")
-    private Address address;
+    @JoinColumn(name = "medicAddress_id")
+    private Address medicAddress;
 
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
     private Boolean active = true;
@@ -33,7 +33,7 @@ public class Medic {
     public Medic() {
     }
 
-    public Medic(Long id, String name, Integer age, String CRM, String email, String phone, MedicSpeciality speciality, Boolean active, Address address) {
+    public Medic(Long id, String name, Integer age, String CRM, String email, String phone, MedicSpeciality speciality, Boolean active, Address medicAddress) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -42,7 +42,7 @@ public class Medic {
         this.phone = phone;
         this.speciality = speciality;
         this.active = active;
-        this.address = address;
+        this.medicAddress = medicAddress;
     }
 
     public Long getId() {
@@ -101,12 +101,12 @@ public class Medic {
         this.speciality = speciality;
     }
 
-    public Address getAddress() {
-        return address;
+    public Address getmedicAddress() {
+        return medicAddress;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setmedicAddress(Address medicAddress) {
+        this.medicAddress = medicAddress;
     }
 
     public Boolean getActive() {
