@@ -27,10 +27,13 @@ public class Medic {
     @JoinColumn(name = "address_id")
     private Address address;
 
+    @Column(nullable = false, columnDefinition = "TINYINT(1)")
+    private Boolean active;
+
     public Medic() {
     }
 
-    public Medic(Long id, String name, Integer age, String CRM, String email, String phone, MedicSpeciality speciality, Address address) {
+    public Medic(Long id, String name, Integer age, String CRM, String email, String phone, MedicSpeciality speciality, Boolean active, Address address) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -38,6 +41,7 @@ public class Medic {
         this.email = email;
         this.phone = phone;
         this.speciality = speciality;
+        this.active = active;
         this.address = address;
     }
 
@@ -103,6 +107,14 @@ public class Medic {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
     @Override
