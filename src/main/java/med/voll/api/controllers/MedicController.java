@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import med.voll.api.entities.dto.FormMedicDTO;
 import med.voll.api.entities.dto.FormToUpdateMedicDTO;
 import med.voll.api.entities.dto.MedicDTO;
+import med.voll.api.entities.dto.MedicDetailedDTO;
 import med.voll.api.services.MedicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,7 +27,7 @@ public class MedicController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<MedicDTO> findAMedicById(@PathVariable Long id) {
+    public ResponseEntity<MedicDetailedDTO> findAMedicById(@PathVariable Long id) {
         return ResponseEntity.ok().body(service.findById(id));
     }
 

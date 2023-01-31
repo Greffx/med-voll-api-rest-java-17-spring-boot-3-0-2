@@ -28,8 +28,8 @@ public class MedicService {
         return mapper.fromMedicToMedicDTO(repository.save(mapper.fromFormMedicDTOToMedic(medicDTO)));
     }
 
-    public MedicDTO findById(Long id) {
-        return mapper.fromMedicToMedicDTO(repository.findById(id).orElseThrow(() -> new MedicNotFoundException("Not a valid value, try another one.")));
+    public MedicDetailedDTO findById(Long id) {
+        return mapper.fromMedicToMedicDetailedDTO(repository.findById(id).orElseThrow(() -> new MedicNotFoundException("Not a valid value, try another one.")));
     }
 
     public FormToUpdateMedicDTO upgradeAMedic(FormToUpdateMedicDTO medic, Long id) {
@@ -92,7 +92,8 @@ public class MedicService {
         setToInactive(medic);
     }
 
-    private void setToInactive(Medic medic) {
+    void setToInactive(Medic medic) {
         medic.setActive(Boolean.FALSE);
+        repository.save(medic);
     }
 }
