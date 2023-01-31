@@ -18,25 +18,25 @@ public class MedicService {
     private MedicRepository repository;
 
     @Autowired
-    private MedicMapper medicMapper;
+    private MedicMapper mapper;
 
     public Page<MedicDTO> findAll(Pageable pageable) {
-        return repository.findAllByActiveTrue(pageable).map(page -> medicMapper.fromMedicToMedicDTO(page));
+        return repository.findAllByActiveTrue(pageable).map(page -> mapper.fromMedicToMedicDTO(page));
     }
 
-    public void createAMedic(FormMedicDTO medicDTO) {
-        repository.save(medicMapper.fromFormMedicDTOToMedic(medicDTO));
+    public MedicDTO createAMedic(FormMedicDTO medicDTO) {
+        return mapper.fromMedicToMedicDTO(repository.save(mapper.fromFormMedicDTOToMedic(medicDTO)));
     }
 
     public MedicDTO findById(Long id) {
-        return medicMapper.fromMedicToMedicDTO(repository.findById(id).orElseThrow(() -> new MedicNotFoundException("Not a valid value, try another one.")));
+        return mapper.fromMedicToMedicDTO(repository.findById(id).orElseThrow(() -> new MedicNotFoundException("Not a valid value, try another one.")));
     }
 
-    public void upgradeAMedic(FormToUpdateMedicDTO medic, Long id) {
+    public FormToUpdateMedicDTO upgradeAMedic(FormToUpdateMedicDTO medic, Long id) {
         findById(id);
         Medic monitored = repository.getReferenceById(id);
         methodToUpdateMedic(monitored, medic);
-        repository.save(monitored);
+        return mapper.fromMedicToFormMedicDTODetailed(repository.save(monitored));
     }
 
     private void methodToUpdateMedic(Medic monitored, FormToUpdateMedicDTO medic) {

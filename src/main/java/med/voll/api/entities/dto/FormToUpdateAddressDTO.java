@@ -1,5 +1,6 @@
 package med.voll.api.entities.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import med.voll.api.entities.Medic;
 
 public class FormToUpdateAddressDTO {
@@ -13,6 +14,8 @@ public class FormToUpdateAddressDTO {
     private Integer CEP;
 
     private String district;
+
+    @JsonIgnore
     private Medic medic;
 
     public FormToUpdateAddressDTO() {

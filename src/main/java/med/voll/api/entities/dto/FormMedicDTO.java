@@ -15,6 +15,7 @@ public class FormMedicDTO {
     @NotBlank
     private String name;
 
+    @NotBlank
     @JsonProperty("CRM")
     @Pattern(regexp = "\\d{4,6}", message = "must be bigger or equal than 4 and less or equal than 6") //\d it means that's a digit min and max
     private String crm;
@@ -22,7 +23,11 @@ public class FormMedicDTO {
     @Email
     @NotBlank(message = "this field can not be empty")
     private String email;
+
+    @NotNull
     private String phone;
+
+    @NotNull
     private Integer age;
 
     @NotNull(message = "your speciality can't be empty")

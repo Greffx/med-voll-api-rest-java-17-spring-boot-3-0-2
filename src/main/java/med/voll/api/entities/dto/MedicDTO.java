@@ -1,42 +1,36 @@
 package med.voll.api.entities.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import med.voll.api.entities.enums.MedicSpeciality;
 
-@JsonPropertyOrder({"name", "email", "crm", "speciality"})
+@JsonPropertyOrder({"id", "name", "email", "crm", "speciality"})
 public class MedicDTO {
 
-    @NotBlank
+    private Long id;
     private String name;
-
-    @JsonProperty("CRM")
-    @Pattern(regexp = "\\d{4,6}", message = "must be bigger or equal than 4 and less or equal than 6") //\d it means that's a digit min and max
     private String crm;
-
-    @Email
-    @NotBlank(message = "this field can not be empty")
     private String email;
-
-    @NotBlank
     private Integer age;
-
-    @NotNull(message = "your speciality can't be empty")
     private MedicSpeciality speciality;
 
     public MedicDTO() {
     }
 
-    public MedicDTO(String name, String crm, String email, Integer age, MedicSpeciality speciality) {
+    public MedicDTO(Long id, String name, String crm, String email, Integer age, MedicSpeciality speciality) {
+        this.id = id;
         this.name = name;
         this.age = age;
         this.crm = crm;
         this.email = email;
         this.speciality = speciality;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

@@ -11,7 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("/medic")
@@ -31,15 +31,13 @@ public class MedicController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> createAMedic(@RequestBody @Valid FormMedicDTO medic) {
-        service.createAMedic(medic);
-        return ResponseEntity.created(ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(medic.getId()).toUri()).build();
+    public ResponseEntity<MedicDTO> createAMedic(@RequestBody @Valid FormMedicDTO medic, UriComponentsBuilder uriBuilder) {
+        return ResponseEntity.created(uriBuilder.path("medic/{id}").buildAndExpand(medic.getId()).toUri()).body(service.createAMedic(medic));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> upgradeAMedic(@RequestBody FormToUpdateMedicDTO medic, @PathVariable Long id) {
-        service.upgradeAMedic(medic, id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<FormToUpdateMedicDTO> upgradeAMedic(@RequestBody FormToUpdateMedicDTO medic, @PathVariable Long id) {
+        return ResponseEntity.ok().body(service.upgradeAMedic(medic, id));
     }
 
     @DeleteMapping("/{id}")
