@@ -21,7 +21,7 @@ public class MedicService {
     private MedicMapper medicMapper;
 
     public Page<MedicDTO> findAll(Pageable pageable) {
-        return repository.findAll(pageable).map(page -> medicMapper.fromMedicToMedicDTO(page));
+        return repository.findAllByActiveTrue(pageable).map(page -> medicMapper.fromMedicToMedicDTO(page));
     }
 
     public void createAMedic(FormMedicDTO medicDTO) {
@@ -87,6 +87,12 @@ public class MedicService {
     }
 
     public void deleteAMedic(Long id) {
-        repository.deleteById(id);
+        findById(id);
+        var medic = repository.getReferenceById(id);
+        setToInactive(medic);
+    }
+
+    private void setToInactive(Medic medic) {
+        medic.setActive(Boolean.FALSE);
     }
 }
