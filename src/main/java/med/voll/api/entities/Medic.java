@@ -28,7 +28,7 @@ public class Medic {
     private Address address;
 
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
-    private Boolean active;
+    private Boolean active = true;
 
     public Medic() {
     }
