@@ -1,1 +1,0 @@
-ALTER TABLE `vollmed_api`.`tb_medic` ADD COLUMN `age` INT NOT NULL AFTER `address_id`;

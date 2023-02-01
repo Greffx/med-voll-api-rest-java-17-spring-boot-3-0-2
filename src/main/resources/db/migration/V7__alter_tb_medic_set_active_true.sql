@@ -1,1 +1,0 @@
-UPDATE `vollmed_api`.`tb_medic` SET active = 1;

@@ -1,1 +1,0 @@
-ALTER TABLE `vollmed_api`.`tb_medic` ADD COLUMN `name` VARCHAR(150) NOT NULL AFTER `address_id`;
