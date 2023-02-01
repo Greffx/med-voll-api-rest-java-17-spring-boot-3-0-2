@@ -2,7 +2,11 @@ package med.voll.api.services;
 
 import med.voll.api.entities.Address;
 import med.voll.api.entities.Medic;
-import med.voll.api.entities.dto.*;
+import med.voll.api.entities.dto.address.FormToUpdateAddressDTO;
+import med.voll.api.entities.dto.medic.FormMedicDTO;
+import med.voll.api.entities.dto.medic.FormToUpdateMedicDTO;
+import med.voll.api.entities.dto.medic.MedicDTO;
+import med.voll.api.entities.dto.medic.MedicDetailedDTO;
 import med.voll.api.mapper.MedicMapper;
 import med.voll.api.repositories.MedicRepository;
 import med.voll.api.services.exceptions.MedicNotFoundException;
@@ -52,37 +56,17 @@ public class MedicService {
             monitored.setAge(medic.getAge());
         }
 
-        monitored.setAddress(updateAddress(medic.getAddress(), monitored.getAddress()));
+        monitored.setmedicAddress(updateAddress(medic.getAddress(), monitored.getmedicAddress()));
     }
 
     private Address updateAddress(FormToUpdateAddressDTO addressDTO, Address address) {
-        if (addressDTO.getCEP() != null) {
-            address.setCEP(addressDTO.getCEP());
-        }
-
-        if (addressDTO.getCity() != null) {
-            address.setCity(addressDTO.getCity());
-        }
-
-        if (addressDTO.getComplement() != null) {
-            address.setComplement(addressDTO.getComplement());
-        }
-
-        if (addressDTO.getDistrict() != null) {
-            address.setDistrict(addressDTO.getDistrict());
-        }
-
-        if (addressDTO.getLougradouro() != null) {
-            address.setLougradouro(addressDTO.getLougradouro());
-        }
-
-        if (addressDTO.getNumber() != null) {
-            address.setNumber(addressDTO.getNumber());
-        }
-
-        if (addressDTO.getUF() != null) {
-            address.setUF(addressDTO.getUF());
-        }
+        if (addressDTO.getCEP() != null) address.setCEP(addressDTO.getCEP());
+        if (addressDTO.getCity() != null) address.setCity(addressDTO.getCity());
+        if (addressDTO.getComplement() != null) address.setComplement(addressDTO.getComplement());
+        if (addressDTO.getDistrict() != null) address.setDistrict(addressDTO.getDistrict());
+        if (addressDTO.getLougradouro() != null) address.setLougradouro(addressDTO.getLougradouro());
+        if (addressDTO.getNumber() != null) address.setNumber(addressDTO.getNumber());
+        if (addressDTO.getUF() != null) address.setUF(addressDTO.getUF());
         return address;
     }
 

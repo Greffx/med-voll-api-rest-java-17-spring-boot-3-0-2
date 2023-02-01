@@ -24,7 +24,7 @@ public class Medic {
     //@Enumerated(EnumType.STRING)
     private MedicSpeciality speciality;
     @OneToOne( cascade = CascadeType.ALL)
-    @JoinColumn(name = "medicAddress_id")
+    @JoinColumn(name = "address_id")
     private Address medicAddress;
 
     @Column(nullable = false, columnDefinition = "TINYINT(1)")

@@ -1,10 +1,10 @@
 package med.voll.api.mapper;
 
 import med.voll.api.entities.Medic;
-import med.voll.api.entities.dto.FormMedicDTO;
-import med.voll.api.entities.dto.FormToUpdateMedicDTO;
-import med.voll.api.entities.dto.MedicDTO;
-import med.voll.api.entities.dto.MedicDetailedDTO;
+import med.voll.api.entities.dto.medic.FormMedicDTO;
+import med.voll.api.entities.dto.medic.FormToUpdateMedicDTO;
+import med.voll.api.entities.dto.medic.MedicDTO;
+import med.voll.api.entities.dto.medic.MedicDetailedDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
