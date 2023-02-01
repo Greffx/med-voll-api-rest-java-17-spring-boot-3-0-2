@@ -17,20 +17,22 @@ public class Patient {
     private String email;
     private String phone;
     private String cpf;
-    @OneToOne
-    @JoinColumn(name = "patientAddress_id")
+    private Boolean active = true;
+    @OneToOne( cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id")
     private Address patientAddress;
 
     public Patient() {
     }
 
-    public Patient(Long id, String name, Integer age, String email, String phone, String cpf, Address patientAddress) {
+    public Patient(Long id, String name, Integer age, String email, String phone, String cpf, Boolean active, Address patientAddress) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.email = email;
         this.phone = phone;
         this.cpf = cpf;
+        this.active = active;
         this.patientAddress = patientAddress;
     }
 
@@ -80,6 +82,14 @@ public class Patient {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
     public Address getPatientAddress() {
