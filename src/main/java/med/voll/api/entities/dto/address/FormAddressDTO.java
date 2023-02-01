@@ -3,6 +3,7 @@ package med.voll.api.entities.dto.address;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import med.voll.api.entities.dto.medic.MedicDetailedDTO;
+import med.voll.api.entities.dto.patient.FormPatientDTO;
 
 public class FormAddressDTO {
 
@@ -30,6 +31,8 @@ public class FormAddressDTO {
     private String district;
 
     private MedicDetailedDTO medicDTO;
+
+    private FormPatientDTO patientDTO;
 
     public FormAddressDTO() {
     }
@@ -115,5 +118,13 @@ public class FormAddressDTO {
 
     public void setMedic(MedicDetailedDTO medic) {
         this.medicDTO = medic;
+    }
+
+    public FormPatientDTO getPatientDTO() {
+        return patientDTO;
+    }
+
+    public void setPatientDTO(FormPatientDTO patientDTO) {
+        this.patientDTO = patientDTO;
     }
 }

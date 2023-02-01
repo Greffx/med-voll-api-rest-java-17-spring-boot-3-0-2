@@ -2,7 +2,9 @@ package med.voll.api.controllers;
 
 import jakarta.validation.Valid;
 import med.voll.api.entities.Patient;
+import med.voll.api.entities.dto.patient.FormPatientDTO;
 import med.voll.api.entities.dto.patient.FormUpdatePatientDTO;
+import med.voll.api.entities.dto.patient.PatientDetailedDTO;
 import med.voll.api.entities.dto.patient.TypeForListPatientDTO;
 import med.voll.api.services.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,17 +28,23 @@ public class PatientController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Patient> findPatientById(@PathVariable Long id) {
+    public ResponseEntity<PatientDetailedDTO> findPatientById(@PathVariable Long id) {
         return ResponseEntity.ok().body(service.findByIdPatient(id));
     }
 
-//    @PostMapping
-//    public ResponseEntity<Patient> create(@RequestBody @Valid PatientDTO patient, UriComponentsBuilder builder) {
-//        return ResponseEntity.created(builder.path("patient/{id}").buildAndExpand(patient.getId()).toUri()).body(service.createAPatient(patient));
-//    }
+   @PostMapping
+    public ResponseEntity<FormPatientDTO> create(@RequestBody @Valid FormPatientDTO patient, UriComponentsBuilder builder) {
+        return ResponseEntity.created(builder.path("patient/{id}").buildAndExpand(patient.getId()).toUri()).body(service.createAPatient(patient));
+    }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Patient> updatePatient(@RequestBody FormUpdatePatientDTO patientDTO, @PathVariable Long id) {
+    public ResponseEntity<PatientDetailedDTO> updatePatient(@RequestBody FormUpdatePatientDTO patientDTO, @PathVariable Long id) {
         return ResponseEntity.ok().body(service.updatePatient(patientDTO, id));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteAPatient(@PathVariable Long id) {
+        service.deletePatientById(id);
+        return ResponseEntity.noContent().build();
     }
 }
