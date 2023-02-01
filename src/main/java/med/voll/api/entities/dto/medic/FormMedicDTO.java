@@ -1,4 +1,4 @@
-package med.voll.api.entities.dto;
+package med.voll.api.entities.dto.medic;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.Valid;
@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import med.voll.api.entities.dto.address.FormAddressDTO;
 import med.voll.api.entities.enums.MedicSpeciality;
 
 public class FormMedicDTO {

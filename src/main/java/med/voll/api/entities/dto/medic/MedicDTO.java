@@ -1,4 +1,4 @@
-package med.voll.api.entities.dto;
+package med.voll.api.entities.dto.medic;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import med.voll.api.entities.enums.MedicSpeciality;

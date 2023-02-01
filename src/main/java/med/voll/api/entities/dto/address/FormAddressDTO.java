@@ -1,27 +1,40 @@
-package med.voll.api.entities.dto;
+package med.voll.api.entities.dto.address;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import med.voll.api.entities.Medic;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import med.voll.api.entities.dto.medic.MedicDetailedDTO;
 
-public class FormToUpdateAddressDTO {
+public class FormAddressDTO {
 
     private Long id;
+
+    @NotBlank
     private String lougradouro;
+
+    @NotNull
     private Integer number;
+
+    @NotBlank
     private String complement;
+
+    @NotBlank
     private String city;
+
+    @NotBlank
     private String UF;
+
+    @NotNull
     private Integer CEP;
 
+    @NotBlank
     private String district;
 
-    @JsonIgnore
-    private Medic medic;
+    private MedicDetailedDTO medicDTO;
 
-    public FormToUpdateAddressDTO() {
+    public FormAddressDTO() {
     }
 
-    public FormToUpdateAddressDTO(Long id, String lougradouro, Integer number, String complement, String city, String UF, Integer CEP, String district) {
+    public FormAddressDTO(Long id, String lougradouro, Integer number, String complement, String city, String UF, Integer CEP, String district) {
         this.id = id;
         this.lougradouro = lougradouro;
         this.number = number;
@@ -96,11 +109,11 @@ public class FormToUpdateAddressDTO {
         this.district = district;
     }
 
-    public Medic getMedic() {
-        return medic;
+    public MedicDetailedDTO getMedic() {
+        return medicDTO;
     }
 
-    public void setMedic(Medic medic) {
-        this.medic = medic;
+    public void setMedic(MedicDetailedDTO medic) {
+        this.medicDTO = medic;
     }
 }

@@ -1,7 +1,8 @@
-package med.voll.api.entities.dto;
+package med.voll.api.entities.dto.medic;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import med.voll.api.entities.dto.address.AddressDetailedDTO;
 import med.voll.api.entities.enums.MedicSpeciality;
 
 @JsonPropertyOrder({"id", "name", "crm", "age", "email", "speciality", "phone", "address"})

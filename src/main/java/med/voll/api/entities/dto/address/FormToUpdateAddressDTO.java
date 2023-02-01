@@ -1,8 +1,9 @@
-package med.voll.api.entities.dto;
+package med.voll.api.entities.dto.address;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import med.voll.api.entities.Medic;
 
-public class AddressDetailedDTO {
+public class FormToUpdateAddressDTO {
 
     private Long id;
     private String lougradouro;
@@ -15,12 +16,12 @@ public class AddressDetailedDTO {
     private String district;
 
     @JsonIgnore
-    private MedicDetailedDTO medic;
+    private Medic medic;
 
-    public AddressDetailedDTO() {
+    public FormToUpdateAddressDTO() {
     }
 
-    public AddressDetailedDTO(Long id, String lougradouro, Integer number, String complement, String city, String UF, Integer CEP, String district) {
+    public FormToUpdateAddressDTO(Long id, String lougradouro, Integer number, String complement, String city, String UF, Integer CEP, String district) {
         this.id = id;
         this.lougradouro = lougradouro;
         this.number = number;
@@ -95,12 +96,11 @@ public class AddressDetailedDTO {
         this.district = district;
     }
 
-    public MedicDetailedDTO getMedic() {
+    public Medic getMedic() {
         return medic;
     }
 
-    public void setMedic(MedicDetailedDTO medic) {
+    public void setMedic(Medic medic) {
         this.medic = medic;
     }
 }
-

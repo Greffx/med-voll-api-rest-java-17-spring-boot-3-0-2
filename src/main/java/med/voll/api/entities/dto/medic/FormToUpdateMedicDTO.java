@@ -1,4 +1,6 @@
-package med.voll.api.entities.dto;
+package med.voll.api.entities.dto.medic;
+
+import med.voll.api.entities.dto.address.FormToUpdateAddressDTO;
 
 public class FormToUpdateMedicDTO {
 
