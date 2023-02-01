@@ -1,18 +1,16 @@
 package med.voll.api.config;
 
-import med.voll.api.entities.Address;
-import med.voll.api.entities.Medic;
-import med.voll.api.entities.Patient;
-import med.voll.api.entities.enums.MedicSpeciality;
-import med.voll.api.repositories.AddressRepository;
-import med.voll.api.repositories.MedicRepository;
-import med.voll.api.repositories.PatientRepository;
+import med.voll.api.domain.entities.Address;
+import med.voll.api.domain.entities.Medic;
+import med.voll.api.domain.entities.Patient;
+import med.voll.api.domain.entities.enums.MedicSpeciality;
+import med.voll.api.domain.repositories.AddressRepository;
+import med.voll.api.domain.repositories.MedicRepository;
+import med.voll.api.domain.repositories.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-
-import java.util.Arrays;
 
 @Configuration
 @Profile("mySqlWorkbench")
