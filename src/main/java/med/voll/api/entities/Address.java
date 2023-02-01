@@ -114,6 +114,14 @@ public class Address {
         this.medic = medic;
     }
 
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
