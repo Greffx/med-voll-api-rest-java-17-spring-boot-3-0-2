@@ -22,7 +22,7 @@ public class MedicController {
     private MedicService service;
 
     @GetMapping
-    public ResponseEntity<Page<MedicDTO>> findAllMedics(@PageableDefault(page = 0, size = 2, sort = {"name"}) Pageable pageable) {
+    public ResponseEntity<Page<MedicDTO>> findAllMedics(@PageableDefault(page = 0, size = 10, sort = {"name"}) Pageable pageable) {
         return ResponseEntity.ok().body(service.findAll(pageable));
     }
 
