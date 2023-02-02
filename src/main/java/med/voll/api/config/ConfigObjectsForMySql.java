@@ -3,14 +3,18 @@ package med.voll.api.config;
 import med.voll.api.domain.entities.Address;
 import med.voll.api.domain.entities.Medic;
 import med.voll.api.domain.entities.Patient;
+import med.voll.api.domain.entities.User;
 import med.voll.api.domain.entities.enums.MedicSpeciality;
 import med.voll.api.domain.repositories.AddressRepository;
 import med.voll.api.domain.repositories.MedicRepository;
 import med.voll.api.domain.repositories.PatientRepository;
+import med.voll.api.domain.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+
+import java.util.Arrays;
 
 @Configuration
 @Profile("mySqlWorkbench")
@@ -24,6 +28,9 @@ public class ConfigObjectsForMySql {
 
     @Autowired
     private PatientRepository patientRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Bean
     public void ObjectsForTests() {
@@ -49,9 +56,12 @@ public class ConfigObjectsForMySql {
         Patient patient = new Patient(null, "Bob", 19, "bob@hotmail.com", "15399954031", "1233435242", Boolean.TRUE, address5);
         Patient patient1 = new Patient(null, "John", 32, "john@hotmail.com", "1539991111", "1111345612", Boolean.TRUE, address6);
 
+        User user = new User(null, "eduardo.greff@voll.med", "$2a$10$U3FAIPjJk0QC4m35XIVDj.Phx980olGb3glXZDYPUqR2J0yBg16QG");
+
 
 //        medicRepository.saveAll(Arrays.asList(medic, medic1, medic2, medic3, medic4));
 //        patientRepository.saveAll(Arrays.asList(patient, patient1));
 //        addressRepository.saveAll(Arrays.asList(address, address1, address2, address3, address4, address5, address6));
+//        userRepository.save(user);
     }
 }

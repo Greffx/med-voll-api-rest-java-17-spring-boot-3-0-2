@@ -1,6 +1,8 @@
 package med.voll.api.domain.entities.dto.security;
 
+
 public class AuthenticationDataDTO {
+
 
     private String login;
     private String password;

@@ -20,6 +20,7 @@ public class AuthenticationController {
 
     @PostMapping
     public ResponseEntity<Void> loginInto(@RequestBody @Valid AuthenticationDataDTO data) {
+        System.out.println(data.getLogin() + " " + data.getPassword());
         manager.authenticate(new UsernamePasswordAuthenticationToken(data.getLogin(), data.getPassword()));
         return ResponseEntity.ok().build();
     }
