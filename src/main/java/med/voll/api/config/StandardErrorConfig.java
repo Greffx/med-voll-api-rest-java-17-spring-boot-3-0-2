@@ -1,5 +1,6 @@
 package med.voll.api.config;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.context.annotation.Configuration;
 
 import java.time.Instant;
@@ -7,29 +8,40 @@ import java.time.Instant;
 @Configuration
 public class StandardErrorConfig {
 
-    private String messageError;
+    private String message;
     private String path;
-    private Integer statusCode;
-    private String typeOfError;
-    private Instant momentOfError;
+    private Integer status;
+
+    @JsonProperty("type")
+    private String typeError;
+    private Instant moment;
+    private String field;
 
     public StandardErrorConfig() {
     }
 
     public StandardErrorConfig(String messageError, String path, Integer statusCode, String typeOfError, Instant momentOfError) {
-        this.messageError = messageError;
+        this.message = messageError;
         this.path = path;
-        this.statusCode = statusCode;
-        this.typeOfError = typeOfError;
-        this.momentOfError = momentOfError;
+        this.status = statusCode;
+        this.typeError = typeOfError;
+        this.moment = momentOfError;
     }
 
-    public String getMessageError() {
-        return messageError;
+    public StandardErrorConfig(String messageError, String path, String typeOfError, Instant momentOfError, String fieldOfError) {
+        this.message = messageError;
+        this.path = path;
+        this.typeError = typeOfError;
+        this.moment = momentOfError;
+        this.field = fieldOfError;
     }
 
-    public void setMessageError(String messageError) {
-        this.messageError = messageError;
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public String getPath() {
@@ -40,27 +52,35 @@ public class StandardErrorConfig {
         this.path = path;
     }
 
-    public Integer getStatusCode() {
-        return statusCode;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setStatusCode(Integer statusCode) {
-        this.statusCode = statusCode;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
-    public String getTypeOfError() {
-        return typeOfError;
+    public String getTypeError() {
+        return typeError;
     }
 
-    public void setTypeOfError(String typeOfError) {
-        this.typeOfError = typeOfError;
+    public void setTypeError(String typeError) {
+        this.typeError = typeError;
     }
 
-    public Instant getMomentOfError() {
-        return momentOfError;
+    public Instant getMoment() {
+        return moment;
     }
 
-    public void setMomentOfError(Instant momentOfError) {
-        this.momentOfError = momentOfError;
+    public void setMoment(Instant moment) {
+        this.moment = moment;
+    }
+
+    public String getField() {
+        return field;
+    }
+
+    public void setField(String field) {
+        this.field = field;
     }
 }
