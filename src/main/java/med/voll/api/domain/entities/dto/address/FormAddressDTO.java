@@ -9,25 +9,25 @@ public class FormAddressDTO {
 
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "must not be blank.")
     private String lougradouro;
 
-    @NotNull
+    @NotNull(message = "number must not be blank.")
     private Integer number;
 
-    @NotBlank
+    @NotBlank(message = "complement must not be blank.")
     private String complement;
 
-    @NotBlank
+    @NotBlank(message = "city must not be blank.")
     private String city;
 
-    @NotBlank
+    @NotBlank(message = "UF must not be blank.")
     private String UF;
 
-    @NotNull
+    @NotNull(message = "CEP must not be blank.")
     private Integer CEP;
 
-    @NotBlank
+    @NotBlank(message = "district must not be blank.")
     private String district;
 
     private MedicDetailedDTO medicDTO;

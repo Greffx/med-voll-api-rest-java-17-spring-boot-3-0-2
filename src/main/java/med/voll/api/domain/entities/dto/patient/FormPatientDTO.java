@@ -10,18 +10,20 @@ public class FormPatientDTO {
 
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "name must not be blank.")
     private String name;
+
+    @NotNull(message =  "name must not be null.")
     private Integer age;
 
     @Email
-    @NotBlank
+    @NotBlank(message = "email must not be blank.")
     private String email;
 
-    @NotBlank
+    @NotBlank(message = "phone must not be blank.")
     private String phone;
 
-    @NotBlank
+    @NotBlank(message = "cpf must not be blank.")
     private String cpf;
 
     @Valid
