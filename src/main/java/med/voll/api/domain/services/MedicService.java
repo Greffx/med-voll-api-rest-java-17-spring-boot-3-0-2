@@ -33,7 +33,7 @@ public class MedicService {
     }
 
     public MedicDetailedDTO findById(Long id) {
-        return mapper.fromMedicToMedicDetailedDTO(repository.findById(id).orElseThrow(() -> new MedicNotFoundException("Not a valid value, try another one.")));
+        return mapper.fromMedicToMedicDetailedDTO(repository.findById(id).orElseThrow(() -> new MedicNotFoundException("Invalid value, try another one")));
     }
 
     public FormToUpdateMedicDTO upgradeAMedic(FormToUpdateMedicDTO medic, Long id) {

@@ -29,7 +29,7 @@ public class PatientService {
     }
 
     public PatientDetailedDTO findByIdPatient(Long id) {
-        return mapper.fromPatientToPatientDetailedDTO(repository.findById(id).orElseThrow(() -> new PatientNotFoundException("This person doesn't exist. Try another one.")));
+        return mapper.fromPatientToPatientDetailedDTO(repository.findById(id).orElseThrow(() -> new PatientNotFoundException("Invalid value, try another one.")));
     }
 
     public PatientDetailedDTO updatePatient(FormUpdatePatientDTO patientDTO, Long id) {
