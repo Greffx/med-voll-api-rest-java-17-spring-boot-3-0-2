@@ -29,9 +29,11 @@ public class ExceptionHandlerController {
         List<FieldError> errorList = exception.getFieldErrors();
         List<StandardErrorConfig> errorConfigs = new ArrayList<>();
         errorList.forEach(error -> {
-            errorConfigs.add(new StandardErrorConfig(error.getDefaultMessage(),
+            errorConfigs.add(new StandardErrorConfig(
+                    error.getDefaultMessage(),
                     request.getDescription(false),
-                    "Bad Request", Instant.now(), error.getField())
+                    "Bad Request", Instant.now(),
+                    error.getField())
             );
         });
         return ResponseEntity.badRequest().body(errorConfigs);
