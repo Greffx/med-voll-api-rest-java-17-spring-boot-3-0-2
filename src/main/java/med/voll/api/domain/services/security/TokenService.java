@@ -32,6 +32,19 @@ public class TokenService {
         }
     }
 
+    public String getSubject(String tokenJwt) {
+        try {
+        return JWT
+                .require(Algorithm.HMAC256(secret))
+                .withIssuer("API eduardo.greff")
+                .build()
+                .verify(tokenJwt)
+                .getSubject();
+        } catch (JWTCreationException exception) {
+            throw new RuntimeException("error when trying to verify JWT", exception);
+        }
+    }
+
     private Instant expirationDate() {
         return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-03:00"));
     }
