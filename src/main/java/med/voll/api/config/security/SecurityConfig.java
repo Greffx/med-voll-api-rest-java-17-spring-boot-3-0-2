@@ -2,6 +2,7 @@ package med.voll.api.config.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -20,6 +21,9 @@ public class SecurityConfig {
         return httpSecurity
                 .csrf().disable() //csrf to disable attacks from CROSS-SITE REQUEST FORGERY
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) //turning stateless, not stateful, cuz this is restfull
+                .and().authorizeHttpRequests() //configuration for authorization
+                .requestMatchers("/login").permitAll() //only permitting with login
+                .anyRequest().authenticated() //any request only with authentication
                 .and().build();
     }
 
