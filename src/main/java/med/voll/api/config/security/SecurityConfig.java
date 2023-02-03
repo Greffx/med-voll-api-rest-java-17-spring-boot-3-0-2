@@ -1,5 +1,7 @@
 package med.voll.api.config.security;
 
+import med.voll.api.security.SecurityFilter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -11,10 +13,14 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity //to enable configuration to security
 public class SecurityConfig {
+
+    @Autowired
+    private SecurityFilter filter;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
@@ -22,9 +28,10 @@ public class SecurityConfig {
                 .csrf().disable() //csrf to disable attacks from CROSS-SITE REQUEST FORGERY
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) //turning stateless, not stateful, cuz this is restfull
                 .and().authorizeHttpRequests() //configuration for authorization
-                .requestMatchers("/login").permitAll() //only permitting with login
+                .requestMatchers(HttpMethod.POST, "/login").permitAll() //only permitting with login
                 .anyRequest().authenticated() //any request only with authentication
-                .and().build();
+                .and().addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class) //organizing filter by order, my first, spring after
+                .build();
     }
 
     @Bean
