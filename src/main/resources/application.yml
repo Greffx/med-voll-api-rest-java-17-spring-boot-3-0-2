@@ -8,3 +8,8 @@ spring:
         - "testDBH2"
         - "mySqlWorkbench"
     active: "mySqlWorkbench"
+
+key:
+  security:
+    token:
+      secret: ${JWT_SECRET:10210202} #ambient var, when it's between ${} will look for ambient var
